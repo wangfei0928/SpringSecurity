@@ -9,4 +9,5 @@ public interface LoginService {
 
         public ResponseResult login(User user);
 
+        ResponseResult logout();
 }
