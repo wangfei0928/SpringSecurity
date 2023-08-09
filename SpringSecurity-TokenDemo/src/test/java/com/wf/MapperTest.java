@@ -1,11 +1,14 @@
 package com.wf;
 
 import com.wf.domain.User;
+import com.wf.mapper.MenuMapper;
 import com.wf.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.List;
 
 /**
  * 功能描述
@@ -20,6 +23,9 @@ public class MapperTest {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private MenuMapper menuMapper;
 
     @Test
     public void TestBCryptPasswordEncoder(){
@@ -42,5 +48,11 @@ public class MapperTest {
         System.out.println(user);
     }
 
+
+    @Test
+    public void testSelectByUserId(){
+        List<String> strings = menuMapper.selectPermsByUserId(1L);
+        System.out.println(strings);
+    }
 
 }

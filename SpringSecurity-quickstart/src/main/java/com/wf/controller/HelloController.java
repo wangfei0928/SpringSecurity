@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+
+    // 系统id  key 密钥，参数    md5
+
     @RequestMapping("/hello")
     public String hello(){
         return "hello";

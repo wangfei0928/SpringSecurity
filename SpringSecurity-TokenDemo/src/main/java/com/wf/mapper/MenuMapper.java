@@ -6,5 +6,5 @@ import com.wf.domain.Menu;
 import java.util.List;
 
 public interface MenuMapper extends BaseMapper<Menu> {
-    List<String> selectPermsByUserId(Long id);
+    List<String> selectPermsByUserId(Long userId);
 }

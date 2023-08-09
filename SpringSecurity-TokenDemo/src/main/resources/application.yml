@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/SpringSecurity?characterEncoding=utf-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/sg_security?characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password: wangfei.*0928
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -9,3 +9,7 @@ spring:
     port: 6379
     database: 0
     password: 123456
+mybatis-plus:
+  mapper-locations: classpath*:/com/wf/mapper/*.xml
+server:
+  port: 8888

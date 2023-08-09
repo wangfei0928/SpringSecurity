@@ -3,6 +3,7 @@ package com.wf.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wf.domain.LoginUser;
 import com.wf.domain.User;
+import com.wf.mapper.MenuMapper;
 import com.wf.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,8 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,6 +24,9 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private MenuMapper menuMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -40,8 +42,8 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         }
 
 
-        // TODO 查询用户权限信息
-        List<String> list = new ArrayList<>(Arrays.asList("test","admin"));
+        // 查询用户权限信息
+        List<String> list = menuMapper.selectPermsByUserId(user.getId());
 
         //把数据 封装成UserDetails返回
         return new LoginUser(user,list);
